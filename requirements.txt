@@ -1,0 +1,1 @@
+https://github.com/fabgeyer/pbzlib-py/archive/master.tar.gz
