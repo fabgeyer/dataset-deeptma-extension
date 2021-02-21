@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package netcal;
+
+enum NetworkGenerator {
+  TANDEM = 0;
+  TREE = 1;
+  RANDOM = 2;
+}
+
+// Describes a network in network calculus
+message Network {
+  int32 id = 1;
+  // Description of which generator has been used for generating the network
+  NetworkGenerator generator = 2;
+  // List of servers of the network
+  repeated Server server = 3;
+  // List of flows of the network
+  repeated Flow flow = 4;
+}
+
+// Server description
+message Server {
+  int32 id = 1;
+
+  // Service curve parameters
+  double rate = 2;
+  double latency = 3;
+}
+
+// Flow description
+message Flow {
+  int32 id = 1;
+
+  // Arrival curve parameters
+  double rate = 2;
+  double burst = 3;
+
+  // List of server ids traversed by the flow
+  repeated int32 path = 4;
+
+  // Bounds computed using TMA
+  TMAResult tma = 5;
+  // Bounds computed using SFA
+  SFAResult sfa = 6;
+  // Bounds computed using PMOO
+  PMOOResult pmoo = 7;
+}
+
+message TMAResult {
+  // Delay bound of the foi using TMA
+  // This corresponds to the minimum of the delay bounds found in `res`
+  double delay = 1;
+  // Backlog bound of the foi using TMA
+  double backlog = 2;
+
+  // List of the different cuts combinations explored by TMA
+  repeated TMACut res = 3;
+}
+
+// Describe a specific cuts combination explored by TMA
+message TMACut {
+  int32 id = 1;
+  // Delay bound of the foi under this specific cuts combination
+  double delay = 2;
+  // Delay bound of the foi under this specific cuts combination
+  double backlog = 3;
+
+  // Description of the different cuts on the flow's path
+  // This list describes if a cut occurs between two servers of the flow's path
+  // Example:
+  //   Assume the flow's path is [srv1, srv2, srv3, srv4]
+  //   The `cut` list will then be of length 3 (i.e. len(path) - 1):
+  //   [cut between srv1 and srv2?, cut between srv2 and srv3?, cut between srv3 and srv4?]
+  repeated bool cut = 4;
+}
+
+message SFAResult {
+  // Delay bound of the foi using SFA
+  double delay = 1;
+  // Backlog bound of the foi using SFA
+  double backlog = 2;
+}
+
+message PMOOResult {
+  // Delay bound of the foi using PMOO
+  double delay = 1;
+  // Backlog bound of the foi using PMOO
+  double backlog = 2;
+}
