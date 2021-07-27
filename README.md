@@ -1,6 +1,6 @@
 # On the Robustness of Deep Learning-predicted Contention Models for Network Calculus
 
-This repository contains the dataset used for the paper [_"On the Robustness of Deep Learning-predicted Contention Models for Network Calculus"_](https://arxiv.org/abs/1911.10522). We refer to the paper for a full explanation of the methodology used for generating the dataset.
+This repository contains the dataset used for the article [_"Graph-based Deep Learning for Fast and Tight Network Calculus Analyses"_](https://doi.org/10.1109/TNSE.2020.3025806) published in IEEE Transactions on Network Science and Engineering, and the paper [_"On the Robustness of Deep Learning-predicted Contention Models for Network Calculus"_](https://doi.org/10.1109/ISCC50000.2020.9219693) published at the 2020 IEEE Symposium on Computers and Communications and its [arXiv version]((https://arxiv.org/abs/1911.10522). We refer to the article and paper for a full explanation of the methodology used for generating the dataset.
 
 
 ## Getting the dataset
@@ -33,12 +33,18 @@ Alternative programming languages may be used with `pbzlib` (e.g. [Java](https:/
 If you use this dataset for your research, please include the following reference in any resulting publication:
 
 ```bibtex
-@misc{GeyerBondorf_1911.10522,
+@article{GeyerBondorf_TNSE2021,
 	author        = {Geyer, Fabien and Bondorf, Steffen},
-	title         = {On the Robustness of Deep Learning-predicted Contention Models for Network Calculus},
-	year          = {2019},
-	month         = nov,
-	eprint        = {1911.10522},
-	archivePrefix = {arXiv},
+	journal       = {IEEE Transactions on Network Science and Engineering},
+	title         = {Graph-Based Deep Learning for Fast and Tight Network Calculus Analyses},
+	year          = {2021},
+	volume        = {8},
+	number        = {1},
+	pages         = {75--88},
+	doi           = {10.1109/TNSE.2020.3025806},
 }
 ```
+
+## License
+
+The data in this repository is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
